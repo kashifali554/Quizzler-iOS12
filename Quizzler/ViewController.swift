@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     let allQuestions = QuestionBank()
     var pickedAnswer : Bool = false
+    var questionNumber : Int = 0
     
     //Place your instance variables here
     
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         let firstQuestion = allQuestions.list[0]
         questionLabel.text = firstQuestion.questionText
         
+        
     }
 
 
@@ -38,6 +40,11 @@ class ViewController: UIViewController {
             pickedAnswer = false
         }
         checkAnswer()
+        
+        questionNumber = questionNumber + 1
+        
+        questionLabel.text = allQuestions.list[questionNumber].questionText
+        
     }
     
     
@@ -54,13 +61,14 @@ class ViewController: UIViewController {
     func checkAnswer() {
 //        checking the answer from questionBank
         
-        let correctAnswer = allQuestions.list[0].answer
+        let correctAnswer = allQuestions.list[questionNumber].answer
         
         if correctAnswer == pickedAnswer {
             print("You got it")
         } else {
             print("Wrong")
         }
+        
     }
     
     
